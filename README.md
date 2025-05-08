@@ -99,3 +99,63 @@ console.log(employee);
 --------------------------------- Blogs---------------------
 
 #### Blogs
+
+Blog 1: Interfaces vs. Types in TypeScript – Which One Should You Use?
+TypeScript provides two ways to define the shape of objects: interface and type. While both serve similar purposes, there are key differences that impact how they are used in projects.
+
+1. Syntax & Declaration
+
+- interface is declared using the interface keyword.
+- type is declared using the type keyword.
+  Example:
+  interface Person {
+  name: string;
+  age: number;
+  }
+
+type PersonAlias = {
+name: string;
+age: number;
+};
+
+Both define the same structure, but their use cases differ. 2. Extensibility & Merging
+
+- Interfaces can be merged when declared multiple times:
+  interface User {
+  name: string;
+  }
+
+interface User {
+age: number;
+}
+
+- This results in:
+  const user: User = { name: "Akash", age: 25 }; // Works!
+  - Types, however, do not merge automatically. Instead, they use intersections:
+  type Name = { name: string };
+  type Age = { age: number };
+  type User = Name & Age;
+
+3. When to Use What?- Use interface for defining structured object types that may grow.
+
+- Use type for unions, intersections, and primitive-based type definitions.
+  By understanding these differences, developers can make more informed decisions on which one to use based on their needs.Blog 2: Understanding Enums in TypeScript – Numeric vs. String EnumsEnums provide a way to define a set of named constants in TypeScript, making code more readable and maintainable. They are especially useful for defining categories, states, or options.1. Numeric EnumsNumeric enums auto-increment values starting from 0 unless explicitly assigned.Example:enum Status {
+  Pending, // 0
+  InProgress, // 1
+  Completed // 2
+  }
+
+console.log(Status.Pending); // Output: 0
+console.log(Status.Completed); // Output: 2 2. String EnumsUnlike numeric enums, string enums require explicit assignments.Example:enum Direction {
+North = "NORTH",
+South = "SOUTH",
+East = "EAST",
+West = "WEST"
+}
+
+console.log(Direction.North); // Output: "NORTH"
+console.log(Direction.West); // Output: "WEST" 3. Why Use Enums?- Improves readability (Status.Completed vs. 2).
+
+- Prevents invalid values by restricting options.
+- Makes debugging easier by using named constants.
+  Enums are particularly useful for defining statuses, roles, directions, or configuration values in large applications.Would you like me to expand on any specific points or adjust these blogs?
